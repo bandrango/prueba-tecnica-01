@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "6a11bfba-cc3d-4e85-9774-8802c69c1003",
+		"name": "PRODUCT_PRICING",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2980805"
+	},
+	"item": [
+		{
+			"name": "OFFER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"brandId\": 1,\n        \"startDate\": \"2020-06-14T00:00:00\",\n        \"endDate\": \"2020-06-30T23:59:59\",\n        \"priceList\": 5,\n        \"partnumber\": \"000100223\",\n        \"priority\": 0,\n        \"price\": 35.53,\n        \"curr\": \"EUR\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/product-pricing/api/{{version}}/offer",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"product-pricing",
+						"api",
+						"{{version}}",
+						"offer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OFFER",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/product-pricing/api/{{version}}/offer/5",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"product-pricing",
+						"api",
+						"{{version}}",
+						"offer",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OFFER ALL",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/product-pricing/api/{{version}}/offer",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"product-pricing",
+						"api",
+						"{{version}}",
+						"offer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OFFER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/product-pricing/api/{{version}}/offer",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"product-pricing",
+						"api",
+						"{{version}}",
+						"offer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OFFER ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/product-pricing/api/{{version}}/offer/4",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"product-pricing",
+						"api",
+						"{{version}}",
+						"offer",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BRAND",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}:{{port}}/product-pricing/api/{{version}}/brand/1/partnumber/0001002/offer",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"product-pricing",
+						"api",
+						"{{version}}",
+						"brand",
+						"1",
+						"partnumber",
+						"0001002",
+						"offer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,178 @@
+openapi: 3.0.0
+info:
+  title: Product Pricing Service API
+  version: "1.0.0"
+  description: >
+    The Product Pricing Service manages pricing offers for products.
+    It follows Hexagonal Architecture, applying SOLID principles,
+    functional programming, Lombok, and JPA with PostgreSQL.
+    This API provides endpoints to create, delete, and query offers,
+    as well as retrieve a flattened timetable (non-overlapping intervals)
+    for a given product.
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/v1/offer:
+    post:
+      summary: Create a new offer
+      description: Creates a new pricing offer in the system.
+      operationId: createOffer
+      requestBody:
+        description: Offer to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferDto'
+      responses:
+        '201':
+          description: Offer created successfully.
+        '400':
+          description: Invalid input.
+    delete:
+      summary: Delete all offers
+      description: Deletes all offers from the system.
+      operationId: deleteAllOffers
+      responses:
+        '200':
+          description: All offers deleted successfully.
+    get:
+      summary: Get all offers
+      description: Retrieves all offers in the system.
+      operationId: getAllOffers
+      responses:
+        '200':
+          description: A list of offers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OfferDto'
+  /api/v1/offer/{id}:
+    get:
+      summary: Get an offer by ID
+      description: Retrieves a specific offer using its ID.
+      operationId: getOfferById
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The ID of the offer to retrieve.
+      responses:
+        '200':
+          description: Offer found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferDto'
+        '404':
+          description: Offer not found.
+    delete:
+      summary: Delete an offer by ID
+      description: Deletes a specific offer using its ID.
+      operationId: deleteOfferById
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The ID of the offer to delete.
+      responses:
+        '200':
+          description: Offer deleted successfully.
+  /api/v1/brand/{brandId}/partnumber/{partnumber}/offer:
+    get:
+      summary: Get timetable for a product
+      description: >
+        Retrieves the flattened timetable (non-overlapping intervals)
+        for a specific brand and product partnumber.
+      operationId: getTimetableForProduct
+      parameters:
+        - in: path
+          name: brandId
+          schema:
+            type: integer
+          required: true
+          description: The brand ID.
+        - in: path
+          name: partnumber
+          schema:
+            type: string
+          required: true
+          description: The product partnumber.
+      responses:
+        '200':
+          description: Timetable retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OfferByPartNumberDto'
+components:
+  schemas:
+    OfferDto:
+      type: object
+      properties:
+        offerId:
+          type: integer
+          example: 1
+        brandId:
+          type: integer
+          example: 1
+        startDate:
+          type: string
+          format: date-time
+          example: "2020-06-14T00:00:00"
+        endDate:
+          type: string
+          format: date-time
+          example: "2020-06-14T14:59:59"
+        priceList:
+          type: integer
+          example: 1
+        partnumber:
+          type: string
+          example: "0001002"
+        priority:
+          type: integer
+          example: 0
+        price:
+          type: number
+          format: float
+          example: 35.50
+        curr:
+          type: string
+          example: "EUR"
+      required:
+        - brandId
+        - startDate
+        - endDate
+        - priceList
+        - partnumber
+        - priority
+        - price
+        - curr
+    OfferByPartNumberDto:
+      type: object
+      properties:
+        from:
+          type: string
+          format: date-time
+          example: "2020-06-14T00:00:00"
+        until:
+          type: string
+          format: date-time
+          example: "2020-06-14T14:59:59"
+        price:
+          type: number
+          format: float
+          example: 35.50
+      required:
+        - from
+        - until
+        - price
