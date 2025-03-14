@@ -99,14 +99,20 @@ Feel free to modify the collection and environment variables as needed for your 
 
 The API is documented using Swagger/OpenAPI 3.0.
 
-- **Swagger File Location**: The Swagger documentation file is located at `swagger/swagger.yaml`.
-- **How to View**: To view and interact with the API documentation, open your web browser and navigate to the [Swagger Editor](https://editor.swagger.io/). Then, open the file located at `swagger/swagger.yaml` in the editor.
+- **Swagger URL**: http://localhost:8080/swagger-ui/index.html
 
 ## Endpoints Summary
+![](images/general.png)
 
 - **POST** `/api/v1/offer` - Create a new offer
+![](images/createNewOffer.png)
 - **DELETE** `/api/v1/offer` - Delete all offers
+![](images/deleteAllOffers.png)
 - **DELETE** `/api/v1/offer/{id}` - Delete a specific offer by ID
+![](images/deleteOfferId.png)
 - **GET** `/api/v1/offer` - Retrieve all offers
+![](images/getAllOffers.png)
 - **GET** `/api/v1/offer/{id}` - Retrieve a specific offer by ID
+![](images/getOfferId.png)
 - **GET** `/api/v1/brand/{brandId}/partnumber/{partnumber}/offer` - Retrieve the flattened timetable for a product
+![](images/brandId.png)

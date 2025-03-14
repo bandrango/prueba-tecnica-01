@@ -31,7 +31,7 @@ import lombok.RequiredArgsConstructor;
  * deleting, and querying offers.
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/product-pricing/api/v1")
 @RequiredArgsConstructor
 @Tag(name = "Offer Management", description = "Operations for managing Offers")
 public class OfferController {

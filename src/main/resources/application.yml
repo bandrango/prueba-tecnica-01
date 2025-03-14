@@ -6,19 +6,15 @@ spring:
   name: product-pricing
  datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}   
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/chaosdb}
+    username: ${DB_USER:chaostest}
+    password: ${DB_PASSWORD:chaostest}   
     hikari:
       connection-timeout: 20000
       minimum-idle: 10
       maximum-pool-size: 100
       idle-timeout: 100000
       max-lifetime: 1800000
-server:
-  port: 8080
-  servlet:
-    context-path: /product-pricing
     
 logging:
   level:
